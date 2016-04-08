@@ -54,8 +54,8 @@ public class MainManager {
     private static void doExam() {
 		long time = System.currentTimeMillis();
 		
-//    	Exam2015_1_1.start();
-    	Exam2015_1_2.start();
+    	Exam2015_1_1.start();
+//    	Exam2015_1_2.start();
     	
 		CLog.print("delay: " + (System.currentTimeMillis() - time));
     }

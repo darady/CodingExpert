@@ -9,11 +9,13 @@
 
 package com.jp.ce.common;
 
+import com.jp.ce.output.OutputManager;
+
 public class CLog
 {
     public static String sTAG = "JP";
 
-    public static boolean sIsEnabled = false;
+    public static boolean sIsEnabled = true;
 
 //    private static SimpleDateFormat sFormatter = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.US);
     public static void printAppInfo() {
@@ -75,6 +77,7 @@ public class CLog
     public static void print(String message)
     {
         System.out.println(message);
+        OutputManager.getInstance().write(message);
     }
 
     public static void exception(String className, Throwable th) {

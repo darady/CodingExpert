@@ -81,6 +81,8 @@ public class InputManager {
     }
     
     public void release() {
+    	mPath = null;
+    	
     	if (mBufferedReader != null) {
 			try {
 				mBufferedReader.close();

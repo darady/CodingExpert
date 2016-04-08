@@ -5,13 +5,15 @@ import java.util.Hashtable;
 
 import com.jp.ce.common.CLog;
 import com.jp.ce.input.InputManager;
+import com.jp.ce.output.OutputManager;
 
 public class Exam2015_1_1 {
 	public static final String TAG = Exam2015_1_1.class.getSimpleName();
 	
-	private static final String DATA = "./data/problem1.in"; //problem1.in.short";
+	private static final String DATA = "./data/problem1.in.short"; //problem1.in.short";
 
 	private static InputManager input = InputManager.getInstance();
+	private static OutputManager output = OutputManager.getInstance();
 	
 	private static int DIS_0 = 0;
 	private static int DIS_NEAR = 1;
@@ -37,6 +39,7 @@ public class Exam2015_1_1 {
 		long time = System.currentTimeMillis();
 		
 		input.load(DATA);
+		output.load(DATA);
 		
 		int total = 0;
 		String data = input.readLine();
@@ -82,6 +85,9 @@ public class Exam2015_1_1 {
 		}
 		
 		CLog.print("delay: " + (System.currentTimeMillis() - time));
+		
+		input.release();
+		output.release();
 	}
 	
 	/*************************************************************************************/
