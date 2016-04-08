@@ -13,7 +13,6 @@ public class Exam2015_1_1 extends ExamBase {
 	public static final String DATA = "./data/problem1.in.short"; //problem1.in.short";
 
 	private static InputManager input = InputManager.getInstance();
-	private static OutputManager output = OutputManager.getInstance();
 	
 	private static int DIS_0 = 0;
 	private static int DIS_NEAR = 1;
