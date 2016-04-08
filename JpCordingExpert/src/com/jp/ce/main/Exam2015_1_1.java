@@ -7,10 +7,10 @@ import com.jp.ce.common.CLog;
 import com.jp.ce.input.InputManager;
 import com.jp.ce.output.OutputManager;
 
-public class Exam2015_1_1 {
+public class Exam2015_1_1 extends ExamBase {
 	public static final String TAG = Exam2015_1_1.class.getSimpleName();
 	
-	private static final String DATA = "./data/problem1.in.short"; //problem1.in.short";
+	public static final String DATA = "./data/problem1.in.short"; //problem1.in.short";
 
 	private static InputManager input = InputManager.getInstance();
 	private static OutputManager output = OutputManager.getInstance();
@@ -33,13 +33,14 @@ public class Exam2015_1_1 {
 	/*************************************************************************************/
     // base method
     /*************************************************************************************/
-	public static void start() {
+	@Override
+	public String getDataPath() {
+		return DATA;
+	}
+
+	@Override
+	public void start() {
 		initData();
-		
-		long time = System.currentTimeMillis();
-		
-		input.load(DATA);
-		output.load(DATA);
 		
 		int total = 0;
 		String data = input.readLine();
@@ -83,19 +84,14 @@ public class Exam2015_1_1 {
 			minScore = Integer.MAX_VALUE;
 			minNumber = null;
 		}
-		
-		CLog.print("delay: " + (System.currentTimeMillis() - time));
-		
-		input.release();
-		output.release();
 	}
 	
 	/*************************************************************************************/
     // algorithm
     /*************************************************************************************/
-	private static int beforeDirection = DIR_FAIL;
+	private int beforeDirection = DIR_FAIL;
 	
-	private static int doMeasure(String data) {
+	private int doMeasure(String data) {
 		CLog.d(TAG, "doMeasure data: " + data);
 		
 		int result = 0;
@@ -119,7 +115,7 @@ public class Exam2015_1_1 {
 		return result;
 	}
 	
-	private static int getScore(int a, int b) {
+	private int getScore(int a, int b) {
 		CLog.d(TAG, "getScore a: " + a + ", b: " + b);
 		
 		int value = sDistanceScoreTable.get((a * 10 + b));
@@ -150,8 +146,8 @@ public class Exam2015_1_1 {
     // data
     /*************************************************************************************/
 	
-	private static Hashtable<Integer, Integer> sDistanceScoreTable = new Hashtable<Integer, Integer>();
-	private static void initData() {
+	private Hashtable<Integer, Integer> sDistanceScoreTable = new Hashtable<Integer, Integer>();
+	private void initData() {
 		sDistanceScoreTable.put(11, 0);
 		sDistanceScoreTable.put(12, 13);
 		sDistanceScoreTable.put(13, 29);

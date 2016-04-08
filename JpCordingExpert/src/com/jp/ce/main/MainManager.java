@@ -54,10 +54,17 @@ public class MainManager {
     private static void doExam() {
 		long time = System.currentTimeMillis();
 		
-    	Exam2015_1_1.start();
-//    	Exam2015_1_2.start();
+		ExamBase target = new Exam2015_1_1();
+		
+		InputManager.getInstance().load(target.getDataPath());
+		OutputManager.getInstance().load(target.getDataPath());
+		
+    	target.start();
     	
-		CLog.print("delay: " + (System.currentTimeMillis() - time));
+    	InputManager.getInstance().release();
+    	OutputManager.getInstance().release();
+    	
+		CLog.i(TAG, "delay: " + (System.currentTimeMillis() - time));
     }
 
     /*************************************************************************************/
