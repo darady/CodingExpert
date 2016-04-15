@@ -15,7 +15,7 @@ public class CLog
 {
     public static String sTAG = "JP";
 
-    public static boolean sIsEnabled = true;
+    public static boolean sIsEnabled = false;
 
 //    private static SimpleDateFormat sFormatter = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.US);
     public static void printAppInfo() {
