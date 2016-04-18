@@ -11,6 +11,7 @@ public class Exam2015_1_1 extends ExamBase {
 	public static final String TAG = Exam2015_1_1.class.getSimpleName();
 	
 	public static final String DATA = "./data/problem1.in.short"; //problem1.in.short";
+	public static final String SOLVED = "./data/problem1.in.short"; //problem1.in.short";
 
 	private static InputManager input = InputManager.getInstance();
 	
@@ -35,6 +36,11 @@ public class Exam2015_1_1 extends ExamBase {
 	@Override
 	public String getDataPath() {
 		return DATA;
+	}
+	
+	@Override
+	public String getSolvedPath() {
+		return SOLVED;
 	}
 
 	@Override

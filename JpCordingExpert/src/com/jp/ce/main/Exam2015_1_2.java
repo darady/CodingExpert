@@ -11,7 +11,8 @@ import com.jp.ce.input.InputManager;
 public class Exam2015_1_2 extends ExamBase {
 	public static final String TAG = Exam2015_1_2.class.getSimpleName();
 	
-	public static final String DATA = "./data/problem2.in"; //problem1.in.short";
+	public static final String DATA = "./data/problem2.in"; //problem2/in_small.txt"; //problem1.in.short";
+	public static final String SOLVED = "./data/problem2.out"; //problem2/in_small.txt"; //problem1.in.short";
 
 	private static InputManager input = InputManager.getInstance();
 	
@@ -21,6 +22,11 @@ public class Exam2015_1_2 extends ExamBase {
 	@Override
 	public String getDataPath() {
 		return DATA;
+	}
+	
+	@Override
+	public String getSolvedPath() {
+		return SOLVED;
 	}
 
 	@Override
@@ -39,6 +45,10 @@ public class Exam2015_1_2 extends ExamBase {
 			setCount++;
 			
 			CLog.d(TAG, "set start: " + setCount);
+			
+			if (setCount == 31) {
+				CLog.d(TAG, "set start: " + setCount);
+			}
 			
 			boolean result = doMeasure();
 			
@@ -94,37 +104,24 @@ public class Exam2015_1_2 extends ExamBase {
 		
 		CLog.d(TAG, "doMeasure minX: " + wall.minX + ", maxX: " + wall.maxX + ", gap: " + wall.gap);
 		
-		wall.minY = mPoints.get(k).y;
-		wall.maxY = mPoints.get(mPoints.size() - 1).y;
-		
-		CLog.d(TAG, "doMeasure minY: " + wall.minY + ", maxY: " + wall.maxY);
-		
-		boolean result = true;
-		for (int i = k; i < mPoints.size() - k; i++) {
-			if (!wall.checkValid(mPoints.get(i))) {
-				result = false;
-				break;
+		for (int i = 0; i <= k; i++) {
+			wall.minY = mPoints.get(i).y;
+			wall.maxY = mPoints.get(mPoints.size() - 1 - (k - i)).y;
+			
+			boolean result = true;
+			for (int j = i; j < mPoints.size() - k + i; j++) {
+				if (!wall.checkValid(mPoints.get(j))) {
+					result = false;
+					break;
+				}
+			}
+			
+			if (result) {
+				return true;
 			}
 		}
 		
-		if (result) {
-			return true;
-		}
-		
-		wall.minY = mPoints.get(0).y;
-		wall.maxY = mPoints.get(mPoints.size() - k - 1).y;
-		
-		CLog.d(TAG, "doMeasure minY: " + wall.minY + ", maxY: " + wall.maxY);
-		
-		result = true;
-		for (int i = 0; i < mPoints.size() - k; i++) {
-			if (!wall.checkValid(mPoints.get(i))) {
-				result = false;
-				break;
-			}
-		}
-		
-		return result;
+		return false;
 	}
 	
 	/*************************************************************************************/

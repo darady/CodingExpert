@@ -57,12 +57,14 @@ public class MainManager {
 		ExamBase target = new Exam2015_1_2();
 		
 		InputManager.getInstance().load(target.getDataPath());
-		OutputManager.getInstance().load(target.getDataPath());
+		String output = OutputManager.getInstance().load(target.getDataPath());
 		
     	target.start();
     	
     	InputManager.getInstance().release();
     	OutputManager.getInstance().release();
+    	
+    	OutputManager.getInstance().compareOutput(output, target.getSolvedPath());
     	
 		CLog.i(TAG, "delay: " + (System.currentTimeMillis() - time));
     }

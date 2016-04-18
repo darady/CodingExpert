@@ -5,4 +5,6 @@ public abstract class ExamBase {
 	
 	public abstract String getDataPath();
 	public abstract void start();
+	
+	public abstract String getSolvedPath();
 }
