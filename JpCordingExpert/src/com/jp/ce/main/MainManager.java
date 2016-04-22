@@ -54,7 +54,7 @@ public class MainManager {
     private static void doExam() {
 		long time = System.currentTimeMillis();
 		
-		ExamBase target = new Exam2015_1_2();
+		ExamBase target = new Exam2015_1_3();
 		
 		InputManager.getInstance().load(target.getDataPath());
 		String output = OutputManager.getInstance().load(target.getDataPath());
